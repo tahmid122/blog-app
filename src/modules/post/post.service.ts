@@ -8,4 +8,10 @@ const createPost = async (
   return result;
 };
 
-export const PostService = { createPost };
+// get posts
+const getPosts = async () => {
+  const result = await prisma.post.findMany({ orderBy: { createdAt: "desc" } });
+  return result;
+};
+
+export const PostService = { createPost, getPosts };

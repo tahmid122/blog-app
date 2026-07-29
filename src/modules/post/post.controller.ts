@@ -11,4 +11,15 @@ const createPost = async (req: Request, res: Response) => {
   }
 };
 
-export const PostsController = { createPost };
+// get posts
+const getPosts = async (req: Request, res: Response) => {
+  try {
+    const result = await PostService.getPosts();
+    res.status(200).send({ success: true, result });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: "Post creating failed", details: error });
+  }
+};
+
+export const PostsController = { createPost, getPosts };
