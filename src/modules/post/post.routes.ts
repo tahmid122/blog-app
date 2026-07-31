@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { PostsController } from "./post.controller";
+import { auth, UserRole } from "../../middleware/auth";
 
 const router = Router();
 
 // create post
-router.post("/", PostsController.createPost);
+router.post("/", auth(UserRole.ADMIN), PostsController.createPost);
 // get posts
 router.get("/", PostsController.getPosts);
 
