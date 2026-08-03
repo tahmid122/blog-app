@@ -2,9 +2,17 @@ import { Post } from "../../../generated/prisma/client";
 import { prisma } from "../../lib/prisma";
 
 const createPost = async (
-  data: Omit<Post, "id" | "createdAt" | "updatedAt">,
+  data: Omit<Post, "id" | "createdAt" | "updatedAt" | "authorId">,
+  userId: string,
 ) => {
-  const result = await prisma.post.create({ data });
+  const result = await prisma.post.create({
+    data: {
+      authorId: userId,
+      title: data.title,
+      content: data.content,
+      tags: data.tags,
+    },
+  });
   return result;
 };
 
