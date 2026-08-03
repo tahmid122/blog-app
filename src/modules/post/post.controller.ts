@@ -18,7 +18,8 @@ const createPost = async (req: Request, res: Response) => {
 // get posts
 const getPosts = async (req: Request, res: Response) => {
   try {
-    const result = await PostService.getPosts();
+    const { search } = req.query;
+    const result = await PostService.getPosts({ search: search as string });
     res.status(200).send({ success: true, result });
   } catch (error) {
     console.log(error);
