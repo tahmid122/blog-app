@@ -14,7 +14,7 @@
     "typescript": "^7.0.2"
   },
   "scripts": {
-    "dev": "npx tsx watch src/server.ts"
+    "dev": "node init && npx tsx watch src/server.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.9.1",
@@ -26,6 +26,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "node-fetch": "^3.3.2",
     "nodemailer": "^9.0.3",
     "pg": "^8.22.0"
   }
